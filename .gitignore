@@ -1,3 +1,8 @@
 .terraform
 vault-password
-terraform/secrets.auto.tfvars
+terraform/variables.tf
+terraform/.terraform
+terraform/vault-password
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/.terraform.lock.hcl
