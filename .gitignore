@@ -1,6 +1,5 @@
 .terraform
 vault-password
-terraform/variables.tf
 terraform/.terraform
 terraform/vault-password
 terraform/terraform.tfstate
