@@ -2,7 +2,90 @@
 
   become: true
   become_method: sudo
-
+  
   tasks:
-    - name: Example from an Ansible Playbook
-      ansible.builtin.ping:
+    - name: add Docker GPG apt key
+      ansible.builtin.apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker Repository
+      ansible.builtin.apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        state: present
+
+    - name: Update apt and install docker-ce
+      ansible.builtin.apt:
+        name: docker-ce
+        update_cache: true
+  
+
+    - name: install pip docker
+      ansible.builtin.pip:
+        name: docker
+
+    - name: add network
+      community.docker.docker_network:
+        name: my_network
+    
+    - name: Copy file nginx conf
+      ansible.builtin.copy:
+        src: nginx.conf
+        dest: /nginx.conf
+
+    - name: create folder certs
+      ansible.builtin.file:
+        path: /certs
+        state: directory
+
+    - name: Copy file private.key
+      ansible.builtin.copy:
+        src: private.key
+        dest: /certs/private.key
+
+    - name: Copy file certificate.cer
+      ansible.builtin.copy:
+        src: certificate.cer
+        dest: /certs/certificate.cer
+
+    - name: create docker nginx
+      community.docker.docker_container:
+        name: nginx-proxy
+        image: nginx
+        restart_policy: always
+        state: started
+        ports:
+          - 80:80
+          - 443:443
+        volumes:
+          - /nginx.conf:/etc/nginx/conf.d/default.conf
+          # - /project/code:/etc/nginx/conf.d
+          - /certs:/etc/nginx/certs
+        networks:
+          - name: my_network
+
+    - name: create docker redmine 
+      community.docker.docker_container:
+        name: redmine
+        image: redmine
+        restart_policy: always
+        state: started
+        ports:
+          - 3000:3000
+        env:
+          NODE_ENV: production
+          REDMINE_HTTPS: "true"
+          REDMINE_DB_POSTGRES: "{{ REDMINE_DB_POSTGRES }}"
+          REDMINE_DB_PORT: "{{ REDMINE_DB_PORT }}"
+          REDMINE_DB_DATABASE: "{{ REDMINE_DB_DATABASE }}"
+          REDMINE_DB_USERNAME: "{{ REDMINE_DB_USERNAME }}"
+          REDMINE_DB_PASSWORD: "{{ REDMINE_DB_PASSWORD }}"
+        networks:
+          - name: my_network
+  roles:
+    - geerlingguy.pip
+- hosts: webservers
+  become: true
+  name: Run datadog agent
+  roles: 
+    - role: datadog.datadog

@@ -1,3 +1,7 @@
+locals {
+  ssh_path_local = var.ssh_path
+}
+
 data "yandex_compute_image" "ubuntu_image" {
   family = "ubuntu-2204-lts"
 }
@@ -26,7 +30,8 @@ resource "yandex_compute_instance" "vm1" {
   }
 
   metadata = {
-    user-data = "${file("./meta.yml")}"
+    # user-data = "${file("./meta.yml")}"
+    ssh-keys = format("%s:${file(local.ssh_path_local)}",var.ssh_user)
   }
 
 }
@@ -56,7 +61,8 @@ resource "yandex_compute_instance" "vm2" {
   }
 
   metadata = {
-    user-data = "${file("./meta.yml")}"
+    # user-data = "${file("./meta.yml")}"
+    ssh-keys = format("%s:${file(local.ssh_path_local)}",var.ssh_user)
   }
 
 }

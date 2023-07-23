@@ -1,0 +1,8 @@
+datadog_checks:
+  http_check:
+    init_config:
+    instances:
+      - name: Application health check status
+        method: GET
+        timeout: 5
+        url: "http://localhost:3000"

@@ -5,3 +5,9 @@ terraform/vault-password
 terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
 terraform/.terraform.lock.hcl
+ansible/certificate.cer
+ansible/private.key
+ansible/group_vars/webservers/vault.yml
+ansible/inventory.ini
+terraform/variables.tf
+terraform_temp

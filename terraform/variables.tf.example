@@ -1,0 +1,62 @@
+variable "token" {
+    description = "Token OAuth for Yandex Cloud"
+    type        = string
+	default = "y0_AgAAa5Hd69z0AmajOAAGXIZJ3Dr0ASAADaAAAo9kTmTuwQArG7nJLQ0"
+	sensitive = true
+}
+
+variable "cloud_id" {
+    description = "ID Yandex Cloud"
+    type        = string
+	default = "boifdh5jh3jhker"
+	sensitive = true
+}
+
+variable "folder_id" {
+    description = "Folder ID для Yandex Cloud"
+    type        = string
+	default = "b6gregjkkllljhgf"
+	sensitive = true
+}
+
+variable "site_url" {
+    description = "Site URL"
+    type        = string
+	default = "site.com."
+	sensitive = true
+}
+
+variable "db_user" {
+    description = "DB User"
+    type        = string
+	default = "user"
+	sensitive = true
+}
+
+variable "db_pwd" {
+    description = "DB Password"
+    type        = string
+	default = "password"
+	sensitive = true
+}
+
+variable "datadog_api_key" {
+    description = "DataDog key"
+    type        = string
+	default = "lsfhkhrfju3j3bjkbjb4jkklllkl"
+	sensitive = true
+}
+
+variable "ssh_user" {
+    description = "SSH User"
+    type        = string
+	default = "sshlogin"
+	sensitive = true
+}
+
+variable "ssh_path" {
+    description = "SSH path on the local"
+    type        = string
+	default = "~/.ssh/id_ed25519.pub"
+	sensitive = true
+}
