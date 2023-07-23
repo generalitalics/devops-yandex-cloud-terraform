@@ -5,6 +5,7 @@ locals {
 data "yandex_compute_image" "ubuntu_image" {
   family = "ubuntu-2204-lts"
 }
+
 // vm1
 resource "yandex_compute_instance" "vm1" {
   allow_stopping_for_update = true
@@ -30,10 +31,8 @@ resource "yandex_compute_instance" "vm1" {
   }
 
   metadata = {
-    # user-data = "${file("./meta.yml")}"
     ssh-keys = format("%s:${file(local.ssh_path_local)}",var.ssh_user)
   }
-
 }
 
 // vm2
@@ -61,7 +60,6 @@ resource "yandex_compute_instance" "vm2" {
   }
 
   metadata = {
-    # user-data = "${file("./meta.yml")}"
     ssh-keys = format("%s:${file(local.ssh_path_local)}",var.ssh_user)
   }
 
