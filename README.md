@@ -18,8 +18,8 @@ Parts:
 - `make encrypt` - *ansible encrypt terraform/variables.tf*
 - `make decrypt` - *ansible decrypt terraform/variables.tf*
 - `make init` - *terraform initialisation YC*
-- `make plan` - *terraform planning all file in terraform folder*
-- `make apply` - *terraform applying all file in terraform folder*
+- `make plan` - *terraform planning all files in terraform folder*
+- `make apply` - *terraform applying all files in terraform folder*
 - `make install` - *ansible installing roles on local MS*
 - `make deploy` - *ansible deploying all Compute Clouds(VMS)*
 - `make destroy` - *terraform destroying all infrastucture in YC*
@@ -94,6 +94,8 @@ variable "ssh_path" {
 Than add two private-files in *ansible* folder: *certificate.cer* and *private.key* issued to you during registration new domain.
 The next steps consist of different make commands in the following order: 
 `make init` (may use VPN) to token initialisation Yandex Cloud connection, `make plan` to planning all cloud infrastructure, `make apply` to create all cloud infrastructure, `make install` to install roles and collections from requirements.yml on local and `make deploy` to deploy apps to the Compute Clouds(VMS)
+
+example: https://generalitalics.ru
 
 ---
 
