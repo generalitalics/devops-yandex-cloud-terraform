@@ -99,6 +99,6 @@ example: https://generalitalics.ru
 
 ---
 
-### Hexlet tests and linter status: [![Actions Status](https://github.com/generalitalics/devops-for-programmers-project-77/workflows/hexlet-check/badge.svg)](https://github.com/generalitalics/devops-for-programmers-project-77/actions)
+### Validate terraform: [![Actions Status](https://github.com/generalitalics/devops-for-programmers-project-77/workflows/validate_check/badge.svg)](https://github.com/generalitalics/devops-for-programmers-project-77/actions)
 
 ### Nginx version: [![NGINX:NGINX](https://repology.org/badge/latest-versions/nginx.svg)](https://repology.org/project/nginx/versions)

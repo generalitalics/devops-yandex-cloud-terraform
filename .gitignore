@@ -9,5 +9,5 @@ ansible/certificate.cer
 ansible/private.key
 ansible/group_vars/webservers/vault.yml
 ansible/inventory.ini
-terraform/variables.tf
 terraform_temp
+variables.tf

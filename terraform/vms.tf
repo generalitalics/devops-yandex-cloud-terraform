@@ -31,10 +31,12 @@ resource "yandex_compute_instance" "vm1" {
   }
 
   metadata = {
+    user-data = format("#cloud-config\ndatasource:\n Ec2:\n  strict_id: false\nssh_pwauth: no\nusers:\n  - name: %s\n    shell: /bin/bash\n    sudo: ALL=(ALL) NOPASSWD:ALL\n    ssh-authorized-keys:\n      - ${file(local.ssh_path_local)}", var.ssh_user)
+    install-unified-agent = "0"
     ssh-keys = format("%s:${file(local.ssh_path_local)}",var.ssh_user)
   }
-}
 
+}
 // vm2
 resource "yandex_compute_instance" "vm2" {
   allow_stopping_for_update = true
@@ -60,6 +62,8 @@ resource "yandex_compute_instance" "vm2" {
   }
 
   metadata = {
+    user-data = format("#cloud-config\ndatasource:\n Ec2:\n  strict_id: false\nssh_pwauth: no\nusers:\n  - name: %s\n    shell: /bin/bash\n    sudo: ALL=(ALL) NOPASSWD:ALL\n    ssh-authorized-keys:\n      - ${file(local.ssh_path_local)}", var.ssh_user)
+    install-unified-agent = "0"
     ssh-keys = format("%s:${file(local.ssh_path_local)}",var.ssh_user)
   }
 
