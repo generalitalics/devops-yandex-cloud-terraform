@@ -99,6 +99,6 @@ example: https://generalitalics.ru
 
 ---
 
-### Validate terraform: [![Actions Status](https://github.com/generalitalics/devops-for-programmers-project-77/workflows/validate_check/badge.svg)](https://github.com/generalitalics/devops-for-programmers-project-77/actions)
+### Validate terraform: ![terraform valudate](https://github.com/github/docs/actions/workflows/validate_check.yml/badge.svg)
 
 ### Nginx version: [![NGINX:NGINX](https://repology.org/badge/latest-versions/nginx.svg)](https://repology.org/project/nginx/versions)
